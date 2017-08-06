@@ -1,4 +1,8 @@
-// http://blogs.msdn.com/b/vistacompatteam/archive/2006/09/25/771232.aspx
+//  08/06/17 DDM
+//  This utility was used to run ftdi.latency.exe as Admin,
+//  before I figured out a more-direct solution.
+//  The following page from Microsoft, from 2006, describes the technique:
+//  http://blogs.msdn.com/b/vistacompatteam/archive/2006/09/25/771232.aspx
 //  build: g++ -Wall -O2 -DUNICODE -D_UNICODE -s fix.ftdi.cpp -o fix.ftdi.exe
 #include <windows.h>
 #include <stdio.h>
@@ -58,7 +62,7 @@ int main(void)
 
   shExecInfo.fMask = NULL;
   shExecInfo.hwnd = NULL;
-  shExecInfo.lpVerb = L"runas";
+  shExecInfo.lpVerb = L"runas";  //  cause lpFile to be run elevated
   shExecInfo.lpFile = L"ftdi.latency.exe";
   shExecInfo.lpParameters = argstr;
   shExecInfo.lpDirectory = NULL;
